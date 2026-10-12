@@ -1,0 +1,180 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}/*vou comentando conforme as regras e pelo o que entendi delas nas aulas e pesquisas*/
+
+
+/*pesquisei e serve para aplicar a regra a tudo, "resetando" o css, assim não corre o risco de dar erro
+    lembro que em sala de aula tinha algo parecido, mas não lembro o jeito*/
+
+body {
+    font-family: Arial, sans-serif;
+}/*definir fontes, a primeira sendo a primeira opção e a depois da vírgula como se fosse um "backup"
+    caso falte a primeira, a segunda assume*/
+
+
+#cabeçalho{
+    background-color: black;
+}/*aqui aplica a regra geral acima e a específica abaixo*/
+
+#cabeçalho a{
+    display:flex;
+    color:white}/*esse flex deixa que os conteudos internos sejam flex
+        ou seja, separe os elementos gerais, "grupos"*/
+
+
+#topo{
+    display:flex;
+    justify-content: center;
+    align-content: center;
+    
+}/*já esse flex, é pra "quebrar" os intens internos (cada lista)*/
+
+
+header {
+    width: 80%; /*p/ sobrar 10% cada lado*/
+    margin: 0 auto; /*0 margem vertical e auto nas laterais*/
+    padding: 20px 0;
+
+    display: flex;
+    justify-content: space-between;/*esse vem para espaçar os elementos horizontalmente*/
+    align-items: center;
+}/*regra geral do header*/
+
+header > a {
+    font-size: 32px;
+    text-decoration: none;
+}/*se o header tiver um "filho direto" ou seja, uma seção desse tipo
+   sem estar dentro de outra, essa regra se aplica; assim, se tiver um "a"
+   em outra parte do código mas não for filho direto, de boa*/
+
+nav ul {
+    display: flex;/*transforma as li internas do ul em flex*/ 
+    gap: 20px; /*espaço entre todos*/
+    list-style: none; /*tira a bolinah do style*/
+}
+
+
+
+h3 {
+    width: 80%;
+    margin: 30px auto 20px;/*30 em cima, auto nas laterais, 20 em baixo*/
+}
+
+
+
+section {
+    width: 80%;
+    margin: 0 auto;
+
+    display: flex;
+    flex-wrap: wrap;/*indica preferencia pra tudo ficar numa linha*/
+    gap: 20px;
+}
+
+article {
+    flex-grow: 1; /*diz que se tiver espaço, pode crescer*/
+    max-width: 590px; /*fiz umas contas atraves do video para ver o tam
+    maximo das fotos, e aproximei nisso*/
+    text-align: center;
+}
+
+article img {
+    display: block;/*vira bloco*/
+    width: 100%;/*ocupa 100% do espaço do article*/
+    height: auto;
+}
+
+article p {
+    margin-top: 5px;
+
+    color: rgba(0, 0, 0, 0.5);/*ultimo digito diz opacidade*/
+    text-align: center;
+}/*regrinha pras legendas*/
+
+
+
+
+@media (min-width: 1841px) {
+    article {
+        flex-basis: calc((100% - 80px) / 5);
+    }
+}/*essa foi a melhor solução que achei, apesar de ter que fazer calculo
+  primeiro dita quando começa a agir*/
+  /*flex-basis, o 100% é quanto ele ocupa interno
+    como no seu video, cabia no maximo 5 imagens laterais, são 4 gaps de 20, então 80 total*/
+  /*basicmente diz, felxiona com base no calculo 100%-80 px e divide tudo por 5 (imagens)*/
+  /*sei que é uma gambiarra, mas vai ter que ser assim*/
+
+
+@media (max-width: 1840px) and (min-width: 1476px) {
+    article {
+        flex-basis: calc((100% - 60px) / 4);
+    }
+}/*aqui só muda conforme as variaveis (qtde de imagens) que tirei de base no seu video*/
+
+
+
+
+@media (max-width: 1475px) and (min-width: 1101px) {
+    article {
+        flex-basis: calc((100% - 40px) / 3);
+    }
+}
+
+
+
+
+@media (max-width: 1100px) and (min-width: 721px) {
+    article {
+        flex-basis: calc((100% - 20px) / 2);
+    }
+}
+
+
+
+@media (max-width: 720px) {
+    header, h3, section {
+        width: 90%;
+    }
+
+    article {
+        flex-basis: 100%;
+    }
+
+    article p {
+        font-size: 18px;
+    }
+}/*aqui chega na parte onde você ativou o media query no vi, aí muda umas regras*/
+
+
+#textologo {
+    color: white;
+}
+
+
+
+@media (max-width: 670px) {
+
+
+    header {
+        align-items: flex-start;/*alinha vertical*/
+    }
+
+
+#cabeçalho nav a{
+    background-color: gray;
+    display:flex;
+    color:white}
+    header > a {
+        font-size: 40px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 5px;
+        text-align: right;
+    }
+}/*regra do "celular" tudo o que comentei antes*/
+
